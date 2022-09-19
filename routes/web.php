@@ -20,14 +20,22 @@ use Rap2hpoutre\FastExcel\FastExcel;
 |
 */
 
+// Route::get(->name('live-repor't)'/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
+
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+    return Inertia::render('Index');
 });
+
+Route::get('/live-report', function () {
+    return Inertia::render('Report/Index');
+})->name('live-report');
 
 Route::middleware([
     'auth:sanctum',

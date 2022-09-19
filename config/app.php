@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use App\Helpers\Timezone;
+use App\Providers\TimezoneProvider;
+use Webpatser\Countries\CountriesFacade;
+use Webpatser\Countries\CountriesServiceProvider;
 
 return [
 
@@ -191,11 +195,15 @@ return [
          */
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+           CountriesServiceProvider::class,
+        TimezoneProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
+          \Orangehill\Iseed\IseedServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
+          Rap2hpoutre\LaravelLogViewer\LaravelLogViewerServiceProvider::class,
 
     ],
 
@@ -212,6 +220,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+             'Countries' => CountriesFacade::class,
+        'Share' => Jorenvh\Share\ShareFacade::class,
+        'Timezone' => Timezone::class
     ])->toArray(),
 
 ];

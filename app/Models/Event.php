@@ -49,12 +49,12 @@ class Event extends Model implements HasMedia
 
     public function live_report_players()
     {
-        return $this->hasMany(LiveReportPlayer::class);
+        return $this->hasMany(EventChip::class);
     }
 
     public function latest_live_report_players()
     {
-        return $this->hasMany(LiveReportPlayer::class)->orderByDesc('current_chips');
+        return $this->hasMany(EventChip::class)->orderByDesc('current_chips');
     }
 
     public function tournament()

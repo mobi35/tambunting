@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class LiveReportLiveReportPlayerTableSeeder extends Seeder
+class LiveReportEventChipTableSeeder extends Seeder
 {
     /**
      * Auto generated seed file

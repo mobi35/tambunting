@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class LiveReportPlayer extends Model
+class EventChip extends Model
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
@@ -45,7 +45,7 @@ class LiveReportPlayer extends Model
 
     public function getPreviousReportAttribute($value)
     {
-        return LiveReportPlayer::where('player_id', $this->player_id)->
+        return EventChip::where('player_id', $this->player_id)->
           where('poker_event_id', $this->poker_event_id)
           ->where('id', '<', $this->id)
           ->orderBy('id', 'desc')->first()->current_chips ?? 0;

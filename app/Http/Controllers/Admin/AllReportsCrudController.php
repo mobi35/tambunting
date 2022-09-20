@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\EventReportRequest;
 use App\Models\ArticleAuthor;
 use App\Models\EventReport;
-use App\Models\LiveReportPlayer;
+use App\Models\EventChip;
 use App\Models\Player;
 use App\Models\Event;
 use App\Models\Tour;
@@ -377,7 +377,7 @@ class AllReportsCrudController extends CrudController
 
         // if ($request->get('players')[0]['player_name'] !== null) {
         //     foreach ($request->get('players') as $player) {
-        //         $liveReportPlayer = new LiveReportPlayer();
+        //         $liveReportPlayer = new EventChip();
         //         $player_id = Player::find($player['player_name']);
         //         $liveReportPlayer->name = $player_id->name;
         //         $liveReportPlayer->player_id = $player['player_name'];
@@ -454,7 +454,7 @@ class AllReportsCrudController extends CrudController
 
         // if ($request->get('players')[0]['player_name'] !== null) {
         //     foreach ($request->get('players') as $player) {
-        //         $liveReportPlayer = new LiveReportPlayer();
+        //         $liveReportPlayer = new EventChip();
         //         $player_id = Player::find($player['player_name']);
         //         $liveReportPlayer->name = $player_id->name;
         //         $liveReportPlayer->player_id = $player['player_name'];

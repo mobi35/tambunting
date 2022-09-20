@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\LiveReportPlayer;
+use App\Models\EventChip;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class LiveReportPlayerFactory extends Factory
+class EventChipFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = LiveReportPlayer::class;
+    protected $model = EventChip::class;
 
     /**
      * Define the model's default state.

@@ -52,12 +52,12 @@ class EventReport extends Model implements HasMedia
 
     public function liveReportPlayers()
     {
-        return $this->belongsToMany(LiveReportPlayer::class);
+        return $this->belongsToMany(EventChip::class);
     }
 
     public function live_report_players()
     {
-        return $this->belongsToMany(LiveReportPlayer::class);
+        return $this->belongsToMany(EventChip::class);
     }
 
     public function author()
@@ -101,7 +101,7 @@ class EventReport extends Model implements HasMedia
                     if ($player['player_id'] === null) {
                         continue;
                     }
-                    $liveReportPlayer = new LiveReportPlayer();
+                    $liveReportPlayer = new EventChip();
 
                     $liveReportPlayer->event_id = $this->event_id;
                     $player_id = Player::find($player['player_id']);
@@ -127,7 +127,7 @@ class EventReport extends Model implements HasMedia
     {
         // dd($value);
         if ($this->liveReportPlayers()->count()) {
-            $val = LiveReportPlayer::with(['liveReports'])->whereHas('liveReports', function ($query) {
+            $val = EventChip::with(['liveReports'])->whereHas('liveReports', function ($query) {
                 $query->where('live_report_id', $this->id);
             })->get(['player_id', 'current_chips', 'payout', 'rank']);
 
@@ -146,7 +146,7 @@ class EventReport extends Model implements HasMedia
                     if ($player['player_id'] === null) {
                         continue;
                     }
-                    $liveReportPlayer = new LiveReportPlayer();
+                    $liveReportPlayer = new EventChip();
 
                     $liveReportPlayer->event_id = $liveReport->event_id;
                     $player_id = Player::find($player['player_id']);

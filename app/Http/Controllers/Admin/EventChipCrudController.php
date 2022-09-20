@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\LiveReportPlayerRequest;
+use App\Http\Requests\EventChipRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class LiveReportPlayerCrudController
+ * Class EventChipCrudController
  *
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class LiveReportPlayerCrudController extends CrudController
+class EventChipCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -27,7 +27,7 @@ class LiveReportPlayerCrudController extends CrudController
     public function setup()
     {
         $this->crud->denyAccess('show');
-        CRUD::setModel(\App\Models\LiveReportPlayer::class);
+        CRUD::setModel(\App\Models\EventChip::class);
         CRUD::setRoute(config('backpack.base.route_prefix').'/live-report-player');
         CRUD::setEntityNameStrings('live report player', 'live report players');
     }
@@ -61,7 +61,7 @@ class LiveReportPlayerCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(LiveReportPlayerRequest::class);
+        CRUD::setValidation(EventChipRequest::class);
 
         CRUD::field('name');
         CRUD::field('current_chips');

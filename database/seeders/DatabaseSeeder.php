@@ -53,8 +53,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ArticlesTableSeeder::class);
         $this->call(ArticleAuthorsTableSeeder::class);
         $this->call(LevelsTableSeeder::class);
-        // $this->call(LiveReportLiveReportPlayerTableSeeder::class);
-        // $this->call(LiveReportPlayersTableSeeder::class);
+        // $this->call(LiveReportEventChipTableSeeder::class);
+        // $this->call(EventChipsTableSeeder::class);
         // $this->call(LiveReportsTableSeeder::class);
         // $this->call(MediaTableSeeder::class);
         $this->call(PlayersTableSeeder::class);

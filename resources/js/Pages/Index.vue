@@ -15,25 +15,11 @@ onMounted(async () => {
     articleStore.getList()
 })
 
-</script>
 
+</script>
 
 <template>
       <FrontLayout title="Kartok">
-         <section class="block-wrapper">
-        <div class="container">
-            <div class="row">
-                {{ articleStore.list }}
-                <div class="col-sm-9">
-                  <MainBar />
-                </div>
-                <div class="col-sm-3">  
-                    <SideBar />
-                </div>
-            </div>
-        </div>
-    </section>
-
-
+                  <MainBar :article-list="articleStore.list" />
       </FrontLayout>
 </template>

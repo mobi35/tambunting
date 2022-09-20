@@ -39,7 +39,6 @@
                     </div>
                 </div>
                 <!-- End Logo & advertisement -->
-
                 <!-- navbar list container -->
                 <div class="nav-list-container navbar navbar-default" >
                     <div class="container">
@@ -63,8 +62,8 @@
 
                                 <li><Link :href="route('live-report')" >Live-reporting</Link> </li>
 
+                                <li><Link :href="route('tournament')" >Event Calendar</Link> </li>
 
-                                <li><a class="travel" href="#">Event calendar</a></li>
 
                                 <li><a class="tech" href="#">rankings & leaderboards</a></li>
 

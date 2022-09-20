@@ -1,7 +1,7 @@
 <script setup>
 import Header from '../Components/Frontend/Header.vue';
 import Footer from '../Components/Frontend/Footer.vue';
-
+import SideBar from '../Components/Frontend/MainContent/SideBar.vue';
 
 defineProps({
     title: String,
@@ -11,18 +11,31 @@ defineProps({
 </script>
 
 <template>
-  <div id="app"> 
     <Header />
       <main>
+    <section class="block-wrapper">
+        <div class="container">
+  <div class="row">
+
+   <div class="col-sm-9">
             <slot />
+   </div>
+                <div class="col-sm-3">  
+                    <SideBar  />
+                </div>
+  </div>
+            </div>
+        </section>
       </main>
+
   <Footer/>
-</div>
 </template>
 
 
 
 <style>
+
+
 .reset-margin {
     margin: unset !important;
 }

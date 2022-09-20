@@ -8,12 +8,17 @@ export const useArticleStore = defineStore('article', {
 
   state: () => {
     return {
-      list: []
+      list: [],
+      singleArticle: {},
+      slugs: []
     }
   },
 
   getters: {
-    // adiCount: 20
+     getArticleBySlug: (state) => {
+      return (slug) => state.list.data.find((article) => article.slug === slug)
+
+    },
   },
 
   actions: {  
@@ -22,7 +27,12 @@ export const useArticleStore = defineStore('article', {
       .then((res) => {
         this.list = res.data
       })
-    }
+    },
+    // async getArticleBySlug(slug) {
+    //   await axios.get('/api/article/'+ slug).then((res) => {
+    //     this.singleArticle = res.data
+    //   })
+    // }
 }
 
 })

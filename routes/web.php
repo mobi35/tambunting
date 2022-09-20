@@ -37,6 +37,24 @@ Route::get('/live-report', function () {
     return Inertia::render('Report/Index');
 })->name('live-report');
 
+Route::get('/tournament', function () {
+    return Inertia::render('Tournament/Index');
+})->name('tournament');
+
+Route::get('/article', function () {
+    return Inertia::render('Article/Index');
+})->name('article');
+
+Route::get('/article/show/{slug}', function ($slug) {
+    return Inertia::render('Article/Show', 
+    [
+        'slug' => $slug
+    ]);
+})->name('article-show');
+
+
+
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),

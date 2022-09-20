@@ -2,6 +2,18 @@
     color: #f44336 !important;
 }
 
+.text-secondary {
+    color: #2d3436;
+}
+
+.text-black {
+    color: #000;
+}
+
+.custom-article iframe {
+    min-width: unset !important;
+}
+
 .navbar-default,
 .logo-advertisement {
     background-color: #2d3436 !important;
@@ -54,9 +66,8 @@ header.active .nav-list-container {
 
 
 .single-post-box .about-more-autor ul.nav-tabs li a {
-    padding: 8px 6px;
+    padding: 8px 13.9px;
     font-size: 10px;
-    width: 100px;
 }
 
 .single-post-box .about-more-autor ul.nav-tabs li {
@@ -148,6 +159,10 @@ header.active .nav-list-container {
         width: 100%;
     }
 
+    .navbar {
+        min-height: auto;
+    }
+
     .navbar-nav>li {
         padding-left: 10px;
     }
@@ -192,30 +207,30 @@ header.active .nav-list-container {
     }
 }
 
-.navbar-nav > li > a:after {
+.navbar-nav>li>a:after {
     color: #fff;
 }
 
 .default-text-color {
     color: #333333;
 
-    transition: ease-in-out ;
+    transition: ease-in-out;
 }
-.default-text-color:hover
-{
+
+.default-text-color:hover {
 
     transition: ease-in-out 200ms;
-    color:#f44336;
+    color: #f44336;
     text-decoration: none;
 }
 
 
 .twitter i {
-    margin-right: 1px!important;
+    margin-right: 1px !important;
 }
 
 .facebook i {
-    margin-right: 1px!important;
+    margin-right: 1px !important;
 }
 
 .whatsapp {
@@ -225,6 +240,6 @@ header.active .nav-list-container {
     margin-left: unset;
 }
 
-.single-post-box .post-tags-box { 
-    padding: unset  ;
+.single-post-box .post-tags-box {
+    padding: unset;
 }

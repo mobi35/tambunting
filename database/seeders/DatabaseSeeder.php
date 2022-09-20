@@ -23,16 +23,17 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin'),
         ]);
 
+
+
         $role = Role::create([
             'name' => 'super-admin',
-            'guard_name' => 'web',
         ]);
 
         $author = Role::create([
             'name' => 'author',
-            'guard_name' => 'web',
         ]);
 
+        // backpack_user()->assignRole('super-admin');
         $user->assignRole('super-admin');
 
         $this->call([
@@ -44,9 +45,7 @@ class DatabaseSeeder extends Seeder
             // ArticleSeeder::class,
             CountrySeeder::class,
             // PlayerSeeder::class,
-
-            // PokerTourSeeder::class,
-            // PokerTournamentSeeder::class,
+         
             // PokerEventSeeder::class,
             // LiveReportSeeder::class,
 
@@ -54,13 +53,13 @@ class DatabaseSeeder extends Seeder
         $this->call(ArticlesTableSeeder::class);
         $this->call(ArticleAuthorsTableSeeder::class);
         $this->call(LevelsTableSeeder::class);
-        $this->call(LiveReportLiveReportPlayerTableSeeder::class);
-        $this->call(LiveReportPlayersTableSeeder::class);
-        $this->call(LiveReportsTableSeeder::class);
-        $this->call(MediaTableSeeder::class);
+        // $this->call(LiveReportLiveReportPlayerTableSeeder::class);
+        // $this->call(LiveReportPlayersTableSeeder::class);
+        // $this->call(LiveReportsTableSeeder::class);
+        // $this->call(MediaTableSeeder::class);
         $this->call(PlayersTableSeeder::class);
-        $this->call(PokerEventsTableSeeder::class);
-        $this->call(PokerTournamentsTableSeeder::class);
-        $this->call(PokerToursTableSeeder::class);
+        $this->call(ToursTableSeeder::class);
+        $this->call(TournamentsTableSeeder::class);
+        $this->call(EventsTableSeeder::class);
     }
 }

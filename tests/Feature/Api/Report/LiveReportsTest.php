@@ -3,6 +3,8 @@
 use App\Models\Article;
 use App\Models\ArticleAuthor;
 use App\Models\ArticleCategory;
+use App\Models\Level;
+use App\Models\PokerEvent;
 use App\Models\Tournament;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -10,43 +12,52 @@ use Spatie\Permission\Models\Role;
 
 uses(RefreshDatabase::class);
 
-test('events is working', function () {
-    $response = $this->get('/api/events');
-    $response->assertStatus(200);
-});
+// test('reports is working', function () {
+//     // $response = $this->get('/api/report');
+//     // $response->assertStatus(200);
+// });
 
-it('cannot create events if unauthenticated', function () {
-    $this->post('admin/events/', [
+it('cannot create reports if unauthenticated', function () {
+    $this->post('admin/report/', [
         'title' => 'adrian',
     ])->assertStatus(302);
 });
 
-it('can insert event if authenticated', function () {
+it('can insert reports if authenticated', function () {
     $u = User::factory()->create();
     $role = Role::create([
         'name' => 'super-admin',
     ]);
 
-    $user = $this->actingAs(User::factory()->create(), 'web');
+    $user = $this->actingAs(User::factory()->create() );
+
+    // dd($user);
+
+
+    // User::factory()->create()->role()->attach($role);
+
 
     backpack_user()->assignRole('super-admin');
 
-    $this->get('admin/events/create')->assertStatus(200);
+    $this->get('admin/report/create')->assertStatus(200);
 
     $data = [
-        'title' => 'Things I do',
-        'description' => 'description',
-        'date_end' => '2021-02-02 00:00:00',
-        'date_start'=> '2021-02-02 00:00:00',
-        'poker_tournament' => Tournament::factory()->create(),
-        'poker_tournament_id' => Tournament::factory()->create()->id,
+        'title' => 'A report',
+        'content' => 'this a content',
+        'day' => '1A',
+        'level_id' => Level::factory()->create()->id,
+        'poker_event_id' => PokerEvent::factory()->create()->id,
+        'date_added'=> '2021-02-02 00:00:00',
+        'players' => '[{"rank":"1","player_id":"41","current_chips":"60000","payout":"0"}]',
+        'user_id' => User::factory()->create()->id
     ];
 
     $datas = $this->post('/admin/events', $data);
+    dd($datas);
 
     // dd($datas);
 
-    $this->assertDatabaseHas('poker_events', ['title' => 'Things I do',
+    $this->assertDatabaseHas('poker_events', ['title' => 'A report',
     ]);
 
     // $datas->assertSessionHasErrors('date_start');

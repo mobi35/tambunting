@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\PokerTour;
+use App\Models\Tour;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PokerTourFactory extends Factory
+class TourFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = PokerTour::class;
+    protected $model = Tour::class;
 
     /**
      * Define the model's default state.

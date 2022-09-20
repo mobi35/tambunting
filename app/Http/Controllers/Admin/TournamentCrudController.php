@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\PokerTournamentRequest;
+use App\Http\Requests\TournamentRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Carbon\Carbon;
 
 /**
- * Class PokerTournamentCrudController
+ * Class 
  *
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class PokerTournamentCrudController extends CrudController
+class TournamentCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -29,7 +29,7 @@ class PokerTournamentCrudController extends CrudController
     {
 
         $this->crud->denyAccess('show');
-        CRUD::setModel(\App\Models\PokerTournament::class);
+        CRUD::setModel(\App\Models\Tournament::class);
         CRUD::setRoute(config('backpack.base.route_prefix').'/poker-tournament');
         CRUD::setEntityNameStrings('poker tournament', 'poker tournaments');
     }
@@ -45,7 +45,7 @@ class PokerTournamentCrudController extends CrudController
     {
         CRUD::column('title');
         CRUD::column('description');
-        CRUD::column('poker_tour');
+        CRUD::column('tour_id');
         CRUD::column('date_start');
         CRUD::column('date_end');
 
@@ -65,11 +65,11 @@ class PokerTournamentCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(PokerTournamentRequest::class);
+        CRUD::setValidation(TournamentRequest::class);
         $start = Carbon::now()->toDateTimeString();
         $end = Carbon::now()->addDays(2)->toDateTimeString();
 
-        CRUD::field('poker_tour_id')->options(function ($query) {
+        CRUD::field('tour_id')->options(function ($query) {
                 return $query->orderBy('title', 'ASC')->get();
         });
          

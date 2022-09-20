@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\PokerTourRequest;
+use App\Http\Requests\TourRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class PokerTourCrudController
+ * Class 
  *
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class PokerTourCrudController extends CrudController
+class TourCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -27,7 +27,7 @@ class PokerTourCrudController extends CrudController
     public function setup()
     {
         $this->crud->denyAccess('show');
-        CRUD::setModel(\App\Models\PokerTour::class);
+        CRUD::setModel(\App\Models\Tour::class);
         CRUD::setRoute(config('backpack.base.route_prefix').'/poker-tour');
         CRUD::setEntityNameStrings('poker tour', 'poker tours');
     }
@@ -60,7 +60,7 @@ class PokerTourCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(PokerTourRequest::class);
+        CRUD::setValidation(TourRequest::class);
 
         CRUD::field('title');
         CRUD::field('description');

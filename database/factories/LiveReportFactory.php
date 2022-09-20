@@ -12,7 +12,7 @@ class LiveReportFactory extends Factory
      *
      * @var string
      */
-    protected $model = LiveReport::class;
+    protected $model = EventReport::class;
 
     /**
      * Define the model's default state.

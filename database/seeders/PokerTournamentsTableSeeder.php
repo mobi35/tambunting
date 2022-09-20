@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class PokerTournamentsTableSeeder extends Seeder
+class TournamentsTableSeeder extends Seeder
 {
     /**
      * Auto generated seed file
@@ -13,9 +13,9 @@ class PokerTournamentsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('poker_tournaments')->delete();
+        \DB::table('tournaments')->delete();
 
-        \DB::table('poker_tournaments')->insert([
+        \DB::table('tournaments')->insert([
             0 => [
                 'id' => 6,
                 'title' => 'APPT Manila 13',
@@ -25,7 +25,7 @@ class PokerTournamentsTableSeeder extends Seeder
                 'timezone' => 'Asia/Manila',
                 'date_start' => '2022-07-29 12:04:00',
                 'date_end' => '2022-08-07 22:04:00',
-                'poker_tour_id' => 6,
+                'tour_id' => 6,
                 'currency_id' => 83,
                 'created_at' => '2022-09-18 09:07:54',
                 'updated_at' => '2022-09-18 09:07:54',

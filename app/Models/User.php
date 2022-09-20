@@ -14,7 +14,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-        use CrudTrait; // <----- this
+    use CrudTrait; // <----- this
     use HasRoles; // <------ and this
     use HasApiTokens;
     use HasFactory;

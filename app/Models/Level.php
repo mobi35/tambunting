@@ -15,6 +15,6 @@ class Level extends Model
 
     public function live_reports()
     {
-        return $this->hasMany(LiveReport::class);
+        return $this->hasMany(EventReport::class);
     }
 }

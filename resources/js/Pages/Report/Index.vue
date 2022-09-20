@@ -1,13 +1,10 @@
 
 <template>
-
 <Head>
-  <title>This is a dynamic title</title>
-
+  <title>This is a dynamic inertia</title>
   <meta property="og:image" name="test" /> 
-
+  <meta property="og:image" name="test" /> 
 </Head>
-
 
       <FrontLayout title="kurik">
   <div class="block-content" >

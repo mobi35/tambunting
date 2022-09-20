@@ -17,12 +17,11 @@ Route::group([
     'namespace' => 'App\Http\Controllers\Admin',
 ], function () { // custom admin routes
 Route::crud('article', 'ArticleCrudController');
-    Route::crud('events', 'PokerEventCrudController');
+    Route::crud('events', 'EventCrudController');
     Route::crud('report', 'LiveReportCrudController');
     Route::crud('all-reports', 'AllReportsCrudController');
-    Route::crud('poker-tour', 'PokerTourCrudController');
-    Route::crud('poker-tournament', 'PokerTournamentCrudController');
-    Route::crud('poker-tournament', 'PokerTournamentCrudController');
+    Route::crud('poker-tour', 'TourCrudController');
+    Route::crud('poker-tournament', 'TournamentCrudController');
     Route::crud('article-category', 'ArticleCategoryCrudController');
     Route::crud('live-report-player', 'LiveReportPlayerCrudController');
     Route::crud('country', 'CountryCrudController');

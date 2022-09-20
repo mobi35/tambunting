@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLiveReportLiveReportPlayerTable extends Migration
+class CreateEventChipEventReportTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,10 @@ class CreateLiveReportLiveReportPlayerTable extends Migration
      */
     public function up()
     {
-        Schema::create('live_report_live_report_player', function (Blueprint $table) {
+        Schema::create('event_chip_event_report', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('live_report_id');
-            $table->foreignId('live_report_player_id');
+            // $table->foreignId('event_chip_id');
+            // $table->foreignId('event_report_id');
         });
     }
 
@@ -27,6 +27,6 @@ class CreateLiveReportLiveReportPlayerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('live_report_live_report_player');
+        Schema::dropIfExists('event_chip_event_report');
     }
 }

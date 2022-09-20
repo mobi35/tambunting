@@ -35,7 +35,7 @@ class LiveReportPlayer extends Model
 
     public function liveReports()
     {
-        return $this->belongsToMany(LiveReport::class);
+        return $this->belongsToMany(EventReport::class);
     }
 
     public function player()

@@ -8,7 +8,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class LiveReport extends Model implements HasMedia
+class EventReport extends Model implements HasMedia
 {
     use InteractsWithMedia;
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
@@ -45,9 +45,9 @@ class LiveReport extends Model implements HasMedia
             ->toMediaCollection('logo');
     }
 
-    public function poker_event()
+    public function event()
     {
-        return $this->belongsTo(PokerEvent::class);
+        return $this->belongsTo(Event::class);
     }
 
     public function liveReportPlayers()
@@ -103,7 +103,7 @@ class LiveReport extends Model implements HasMedia
                     }
                     $liveReportPlayer = new LiveReportPlayer();
 
-                    $liveReportPlayer->poker_event_id = $this->poker_event_id;
+                    $liveReportPlayer->event_id = $this->event_id;
                     $player_id = Player::find($player['player_id']);
                     $liveReportPlayer->name = $player_id->name;
                     $liveReportPlayer->player_id = $player['player_id'];
@@ -125,6 +125,7 @@ class LiveReport extends Model implements HasMedia
 
     public function getPlayersAttribute($value)
     {
+        // dd($value);
         if ($this->liveReportPlayers()->count()) {
             $val = LiveReportPlayer::with(['liveReports'])->whereHas('liveReports', function ($query) {
                 $query->where('live_report_id', $this->id);
@@ -140,7 +141,6 @@ class LiveReport extends Model implements HasMedia
     {
         static::created(function ($liveReport) {
             $reportedPlayer = json_decode($liveReport->players, true);
-
             if (is_countable($reportedPlayer)) {
                 foreach ($reportedPlayer as $player) {
                     if ($player['player_id'] === null) {
@@ -148,7 +148,7 @@ class LiveReport extends Model implements HasMedia
                     }
                     $liveReportPlayer = new LiveReportPlayer();
 
-                    $liveReportPlayer->poker_event_id = $liveReport->poker_event_id;
+                    $liveReportPlayer->event_id = $liveReport->event_id;
                     $player_id = Player::find($player['player_id']);
                     $liveReportPlayer->name = $player_id->name;
                     $liveReportPlayer->player_id = $player['player_id'];

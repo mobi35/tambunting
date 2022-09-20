@@ -4,7 +4,7 @@ use App\Http\Controllers\Api\ArticleController;
 use App\Http\Controllers\Api\EventApiController as ApiEventApiController;
 use App\Http\Controllers\Api\levelApiController;
 use App\Http\Controllers\Api\LiveReportController;
-use App\Http\Controllers\Api\PokerTournamentApiController;
+use App\Http\Controllers\Api\TournamentApiController;
 use App\Http\Controllers\Api\ReportsApiController;
 use App\Http\Controllers\LOFApiEventIndexController;
 use App\Http\Controllers\LOFApiEventsController;
@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('article', ArticleController::class);
 Route::resource('live-report', LiveReportController::class);
-Route::resource('tournament', PokerTournamentApiController::class);
+Route::resource('tournament', TournamentApiController::class);
 Route::resource('level', levelApiController::class);
 Route::get('live-report/view/{id}', [LiveReportController::class, 'view']);
 Route::get('events', [ApiEventApiController::class, 'index']);

@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\PokerTournament;
+use App\Models\Tournament;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PokerTournamentFactory extends Factory
+class TournamentFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = PokerTournament::class;
+    protected $model = Tournament::class;
 
     /**
      * Define the model's default state.

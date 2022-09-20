@@ -13,16 +13,18 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('live_reports', function (Blueprint $table) {
+        Schema::create('event_reports', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->text('content')->nullable();
             $table->string('day');
             $table->string('level_id');
-            $table->foreignId('poker_event_id');
+            $table->foreignId('event_id');
             $table->foreignId('article_author_id');
             $table->dateTime('date_added');
             $table->text('players');
+
+            $table->string('image')->nullable();
             $table->string('image_caption')->nullable();
             $table->string('image_theme')->nullable();
             $table->foreignId('user_id')->nullable();
@@ -37,6 +39,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('live_reports');
+        Schema::dropIfExists('event_reports');
     }
 };

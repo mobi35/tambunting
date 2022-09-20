@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\PokerEventRequest;
-use App\Models\PokerTour;
+use Carbon\Carbon;
+use App\Models\Tour;
+use Illuminate\Http\Request;
+use App\Http\Requests\EventRequest;
+use Backpack\CRUD\app\Library\Widget;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Backpack\CRUD\app\Library\Widget;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 /**
- * Class PokerEventCrudController
+ * Class 
  *
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class PokerEventCrudController extends CrudController
+class EventCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -31,7 +31,7 @@ class PokerEventCrudController extends CrudController
     public function setup()
     {
         $this->crud->denyAccess('show');
-        CRUD::setModel(\App\Models\PokerEvent::class);
+        CRUD::setModel(\App\Models\Event::class);
         CRUD::setRoute(config('backpack.base.route_prefix').'/events');
         CRUD::setEntityNameStrings('events', 'events');
     }
@@ -46,7 +46,7 @@ class PokerEventCrudController extends CrudController
     protected function setupListOperation()
     {
         CRUD::column('title');
-        CRUD::column('poker_tournament');
+        CRUD::column('tournament');
         CRUD::column('date_start');
         CRUD::column('date_end');
         $this->crud->addButtonFromModelFunction('line', 'open_payout', 'openPayout', 'beginning');
@@ -76,7 +76,7 @@ class PokerEventCrudController extends CrudController
 
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(PokerEventRequest::class);
+        CRUD::setValidation(EventRequest::class);
         CRUD::field('title');
         CRUD::field('description');
         $this->crud->addField([
@@ -90,7 +90,7 @@ class PokerEventCrudController extends CrudController
 
         $start = Carbon::now()->toDateTimeString();
         $end = Carbon::now()->addDays(2)->toDateTimeString();
-        $pokerTours = PokerTour::all();
+        $pokerTours = Tour::all();
 
         $this->crud->addFields([
 
@@ -110,10 +110,10 @@ class PokerEventCrudController extends CrudController
         ]);
 
         $this->crud->addField([   // select2_from_array
-            'name' => 'poker_tournament_id',
+            'name' => 'tournament_id',
             'label' => 'Tournament',
             'type' => 'relationship',
-            'entity' => 'poker_tournament',
+            'entity' => 'tournament',
             'attribute' => 'parent',
             'allows_null' => false,
             'options'   => (function ($query) {

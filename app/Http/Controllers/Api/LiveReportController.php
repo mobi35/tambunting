@@ -10,16 +10,16 @@ class LiveReportController extends Controller
 {
     public function index()
     {
-        return LiveReportResource::collection(LiveReport::latest()->paginate(10));
+        return LiveReportResource::collection(EventReport::latest()->paginate(10));
     }
 
     public function show($id)
     {
-        return  LiveReportResource::collection(LiveReport::where('poker_event_id', $id)->paginate(10));
+        return  LiveReportResource::collection(EventReport::where('poker_event_id', $id)->paginate(10));
     }
 
     public function view($id)
     {
-        return  new LiveReportResource(LiveReport::where('id', $id)->first());
+        return  new LiveReportResource(EventReport::where('id', $id)->first());
     }
 }

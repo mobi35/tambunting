@@ -13,7 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('poker_tournaments', function (Blueprint $table) {
+        Schema::create('tournaments', function (Blueprint $table) {
+        // Schema::create('poker_tournaments', function (Blueprint $table) {
             $table->id();
             $table->string('title');
             $table->string('description');
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->string('timezone');
             $table->dateTime('date_start');
             $table->dateTime('date_end');
-            $table->foreignId('poker_tour_id');
+            $table->foreignId('tour_id');
             $table->foreignId('currency_id');
             $table->timestamps();
         });
@@ -35,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('poker_tournaments');
+        Schema::dropIfExists('tournaments');
     }
 };

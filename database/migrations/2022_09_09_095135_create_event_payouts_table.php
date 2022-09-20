@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('payouts', function (Blueprint $table) {
+        Schema::create('event_payouts', function (Blueprint $table) {
             $table->id();
-
             $table->foreignId('player_id');
-            $table->foreignId('poker_event_id')->nullable();
+            $table->foreignId('event_id')->nullable();
+            $table->foreignId('report_id')->nullable();
+            $table->foreignId('place')->nullable();
             $table->string('prize')->nullable();
             $table->timestamps();
         });
@@ -30,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('payouts');
+        Schema::dropIfExists('event_payouts');
     }
 };

@@ -8,7 +8,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class PokerTournament extends Model implements HasMedia
+class Tournament extends Model implements HasMedia
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
@@ -40,9 +40,9 @@ class PokerTournament extends Model implements HasMedia
         'id',
     ];
 
-    public function poker_tour()
+    public function tour()
     {
-        return $this->belongsTo(PokerTour::class);
+        return $this->belongsTo(Tour::class);
     }
 
     public function country()
@@ -64,11 +64,11 @@ class PokerTournament extends Model implements HasMedia
 
     public function getParentAttribute($value)
     {
-        return $this->poker_tour()->first()->title.' > '.$this->title;
+        return $this->tour()->first()->title.' > '.$this->title;
     }
 
-    public function poker_events()
+    public function events()
     {
-        return $this->hasMany(PokerEvent::class);
+        return $this->hasMany(Event::class);
     }
 }

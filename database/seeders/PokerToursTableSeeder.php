@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class PokerToursTableSeeder extends Seeder
+class ToursTableSeeder extends Seeder
 {
     /**
      * Auto generated seed file
@@ -13,9 +13,9 @@ class PokerToursTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('poker_tours')->delete();
+        \DB::table('tours')->delete();
 
-        \DB::table('poker_tours')->insert([
+        \DB::table('tours')->insert([
             0 => [
                 'id' => 6,
                 'title' => 'Asia Pacific Poker Tour',

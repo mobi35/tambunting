@@ -13,12 +13,12 @@ class PokerEventsTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('poker_events')->delete();
+        \DB::table('events')->delete();
 
-        \DB::table('poker_events')->insert([
+        \DB::table('events')->insert([
             0 => [
                 'id' => 6,
-                'poker_tournament_id' => 6,
+                'tournament_id' => 6,
                 'title' => 'APPT Kickoff NLH – ₱3,000,000 Guarantee',
                 'description' => 'APPT Kickoff NLH – ₱3,000,000 Guarantee',
                 'image' => null,

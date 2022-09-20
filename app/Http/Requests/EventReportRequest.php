@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PokerEventRequest extends FormRequest
+class EventReportRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,12 @@ class PokerEventRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required',
-            'description' => 'required',
+            'title' => [
+                'required',
+            ],
+            'content' => 'required',
+            'day' => 'required',
+            'level' => 'required',
         ];
     }
 
@@ -50,9 +54,10 @@ class PokerEventRequest extends FormRequest
     public function messages()
     {
         return [
-            //
             'title.required' => 'Title is required',
-            'description.required' => 'Description is required',
+            'day.required' => 'Day is required',
+            'content.required' => 'Content is required',
+            'level.required' => 'Level is required',
         ];
     }
 }

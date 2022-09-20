@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class PokerTournamentResource extends JsonResource
+class TournamentResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -39,7 +39,7 @@ class PokerTournamentResource extends JsonResource
             'date_start' => Carbon::parse($this->date_start)->toFormattedDateString(),
             'date_end' => Carbon::parse($this->date_end)->toFormattedDateString(),
             'status' => $status,
-            'poker_tour_id' => $this->poker_tour_id,
+            'poker_tour_id' => $this->tour_id,
             'image' => $this->getFirstMediaUrl('poker_tournaments', 'featured-image'),
             'poker_tour' => $this->poker_tour,
             'events' => EventResource::collection($this->poker_events),

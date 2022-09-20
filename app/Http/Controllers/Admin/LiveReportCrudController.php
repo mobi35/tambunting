@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\LiveReportRequest;
-use App\Models\ArticleAuthor;
-use App\Models\LiveReport;
-use App\Models\LiveReportPlayer;
+use DateTime;
+use Carbon\Carbon;
+use App\Models\Event;
 use App\Models\Player;
-use App\Models\PokerEvent;
+use App\Models\LiveReport;
+use App\Models\EventReport;
+use Illuminate\Http\Request;
+use App\Models\ArticleAuthor;
+use App\Models\LiveReportPlayer;
+use Illuminate\Support\Facades\DB;
+use Backpack\CRUD\app\Library\Widget;
+use App\Http\Requests\EventReportRequest;
+use Illuminate\Support\Facades\Validator;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
-use Backpack\CRUD\app\Library\Widget;
-use Carbon\Carbon;
-use DateTime;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
 
 /**
  * Class LiveReportCrudController
@@ -38,7 +39,7 @@ class LiveReportCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\LiveReport::class);
+        CRUD::setModel(\App\Models\EventReport::class);
         CRUD::setRoute(config('backpack.base.route_prefix').'/report');
 
         $this->crud->denyAccess('show');
@@ -48,7 +49,7 @@ class LiveReportCrudController extends CrudController
                 session()->put('event_id', request()->get('event'));
             }
 
-            $getEvent = PokerEvent::where('id', session()->get('event_id'))->first();
+            $getEvent = Event::where('id', session()->get('event_id'))->first();
             CRUD::setEntityNameStrings('reports', $getEvent->title);
 
         // $this->crud->addFilter($options, $values, $filter_logic);
@@ -87,10 +88,10 @@ class LiveReportCrudController extends CrudController
     {
         Widget::add()->to('after_content')->type('view')->view('vendor.backpack.helper.live_report'); // widgets to show the ordering card
 
-        $this->crud->addClause('where', 'poker_event_id', session()->get('event_id'));
+        $this->crud->addClause('where', 'event_id', session()->get('event_id'));
         $this->crud->addButtonFromModelFunction('line', 'open_google', 'shareToSocialMedia', 'beginning');
         if (session()->get('new_reports')) {
-            $liveReportId = LiveReport::find(session()->get('new_reports'))->first()->id;
+            $liveReportId = EventReport::find(session()->get('new_reports'))->first()->id;
             Widget::add()->to('before_content')->type('view')->view('vendor.backpack.custom.share')->liveReportId($liveReportId); // widgets to show the ordering card
         }
         $this->crud->addColumn([
@@ -109,7 +110,7 @@ class LiveReportCrudController extends CrudController
 
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(LiveReportRequest::class);
+        CRUD::setValidation(EventReportRequest::class);
         $this->crud->addField([
 
             'name' => 'user_id',
@@ -124,18 +125,18 @@ class LiveReportCrudController extends CrudController
 
         $this->crud->addField(
             [
-                'name' => 'poker_event_id',
-                'type' => 'hidden',
+                'name' => 'event_id',
+                'type' => 'text',
                 'value' => session()->get('event_id'),
                 'wrapper' => [
                     'class' => 'form-group col-md-12',
                 ],
             ]);
 
-        $lastLevelId = DB::table('live_reports')
+        $lastLevelId = DB::table('event_reports')
         ->join('levels', function ($join) {
-            $join->on('levels.id', '=', 'live_reports.level_id');
-        })->where('poker_event_id', request()->session()->get('event_id'))->orderByDesc('name')
+            $join->on('levels.id', '=', 'event_reports.level_id');
+        })->where('event_id', request()->session()->get('event_id'))->orderByDesc('name')
         ->get(['level_id'])->first()->level_id ?? 1;
 
         CRUD::field('title');
@@ -189,7 +190,6 @@ class LiveReportCrudController extends CrudController
                 ],
 
             ],
-
             [
                 'label' => 'Levels',
                 'type' => 'relationship',
@@ -204,7 +204,6 @@ class LiveReportCrudController extends CrudController
                     'class' => 'form-group col-md-4',
                 ],
             ],
-
             [
                 'label' => 'Day',
                 'name' => 'day',
@@ -299,7 +298,7 @@ class LiveReportCrudController extends CrudController
         Widget::add()->type('script')->content('assets/js/admin/forms/image_condition.js');
 
         // if ($this->crud->getCurrentOperation() === 'update') {
-        //     $liveReport = LiveReport::find($this->crud->getCurrentEntryId());
+        //     $liveReport = EventReport::find($this->crud->getCurrentEntryId());
         //     $players = collect($liveReport->liveReportPlayers);
         // }
     }
@@ -361,6 +360,7 @@ class LiveReportCrudController extends CrudController
 
             // dd($request->all());
 
+            // dd($this->crud->getStrippedSaveRequest($request));
             $item = $this->crud->create($this->crud->getStrippedSaveRequest($request));
 
             $this->data['entry'] = $this->crud->entry = $item;

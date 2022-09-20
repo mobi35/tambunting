@@ -42,7 +42,7 @@ class ImageTheme extends Model implements HasMedia
     }
 
     public function live_report() {
-        return $this->belongsTo(LiveReport::class);
+        return $this->belongsTo(EventReport::class);
     }
 }
 

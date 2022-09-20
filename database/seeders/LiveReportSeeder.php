@@ -21,7 +21,7 @@ class LiveReportSeeder extends Seeder
             'Two 3-way all-ins ended the APPT Main Event, Xin Hua Lai wins the APPT Main Event (₱5,950,635)',
         ];
         foreach ($reportsTitle as $report) {
-            LiveReport::factory()->create([
+            EventReport::factory()->create([
                 'title' => $report,
             ]);
         }

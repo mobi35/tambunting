@@ -118,7 +118,7 @@ class MediaTableSeeder extends Seeder
             ],
             5 => [
                 'id' => 6,
-                'model_type' => 'App\\Models\\PokerTour',
+                'model_type' => 'App\\Models\\Tour',
                 'model_id' => 6,
                 'uuid' => '97b281b3-1286-4a25-abee-3f7401ac769a',
                 'collection_name' => 'poker_tours',
@@ -138,7 +138,7 @@ class MediaTableSeeder extends Seeder
             ],
             6 => [
                 'id' => 7,
-                'model_type' => 'App\\Models\\PokerTournament',
+                'model_type' => 'App\\Models\\Tournament',
                 'model_id' => 6,
                 'uuid' => '6593e457-d731-4808-b748-1cc4bd1546ea',
                 'collection_name' => 'poker_tournaments',

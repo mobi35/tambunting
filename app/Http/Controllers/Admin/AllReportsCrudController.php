@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\LiveReportRequest;
+use App\Http\Requests\EventReportRequest;
 use App\Models\ArticleAuthor;
-use App\Models\LiveReport;
+use App\Models\EventReport;
 use App\Models\LiveReportPlayer;
 use App\Models\Player;
-use App\Models\PokerEvent;
-use App\Models\PokerTour;
+use App\Models\Event;
+use App\Models\Tour;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Backpack\CRUD\app\Library\Widget;
@@ -39,7 +39,7 @@ class AllReportsCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\LiveReport::class);
+        CRUD::setModel(\App\Models\EventReport::class);
         CRUD::setRoute(config('backpack.base.route_prefix').'/all-reports');
 
         $this->crud->removeAllFilters();
@@ -77,7 +77,7 @@ class AllReportsCrudController extends CrudController
         $this->crud->addButtonFromModelFunction('line', 'open_google', 'shareToSocialMedia', 'beginning');
 
         if (session()->get('new_reports')) {
-            $liveReportId = LiveReport::find(session()->get('new_reports'))->first()->id;
+            $liveReportId = EventReport::find(session()->get('new_reports'))->first()->id;
             Widget::add()->to('before_content')->type('view')->view('vendor.backpack.custom.share')->liveReportId($liveReportId); // widgets to show the ordering card
         }
 
@@ -113,7 +113,7 @@ class AllReportsCrudController extends CrudController
 
         ],
             function () {
-                return PokerEvent::all()->pluck('title', 'id')->toArray();
+                return Event::all()->pluck('title', 'id')->toArray();
             },
             function ($values) {
                 $this->crud->query = $this->crud->query->whereHas('poker_event', function ($query) use ($values) {
@@ -124,36 +124,8 @@ class AllReportsCrudController extends CrudController
 
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(LiveReportRequest::class);
+        CRUD::setValidation(EventReportRequest::class);
 
-        // $currentLiveEvent = 0;
-        // if (request()->session()->get('liveId')) {
-        //     $currentLiveEvent = request()->session()->get('liveId');
-        //     $pokerEvent = PokerEvent::where('id', $currentLiveEvent)->first()->title;
-        //     CRUD::setEntityNameStrings('live report', $pokerEvent);
-        // }
-        // CRUD::setValidation(LiveReportRequest::class);
-
-        // if ($this->crud->getCurrentOperation() !== 'update') {
-        //     if ($currentLiveEvent = request()->session()->get('liveId')) {
-        //         $lastLevel = LiveReport::where('id', $currentLiveEvent)->first()->level ?? 1;
-        //     } else {
-        //         $lastLevel = LiveReport::latest()->first()->level;
-        //     }
-        // } else {
-        //     $lastLevel = $this->crud->getCurrentEntry()->level;
-        // }
-
-        // $test = PokerEvent::with(['poker_tournament' => function ($q) {
-        //     return $q->select('id', 'title', 'poker_tour_id');
-        // }])->get()
-        //         ->map(function ($tournament) {
-        //             return [
-        //                 $tournament->id => PokerTour::find($tournament->poker_tournament->poker_tour_id)->first()->title.' > '.$tournament->poker_tournament->title.' > '.$tournament->title.'',
-        //             ];
-        //         });
-
-        // $flattenEvents = $this->nowItIsFlat($test->toArray());
 
         $this->crud->addField([
 
@@ -340,7 +312,7 @@ class AllReportsCrudController extends CrudController
         Widget::add()->type('script')->content('assets/js/admin/forms/image_condition.js');
 
         // if ($this->crud->getCurrentOperation() === 'update') {
-        //     $liveReport = LiveReport::find($this->crud->getCurrentEntryId());
+        //     $liveReport = EventReport::find($this->crud->getCurrentEntryId());
         //     $players = collect($liveReport->liveReportPlayers);
         // }
     }

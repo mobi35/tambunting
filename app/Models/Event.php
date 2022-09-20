@@ -8,7 +8,7 @@ use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
-class PokerEvent extends Model implements HasMedia
+class Event extends Model implements HasMedia
 {
     use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasFactory;
@@ -57,14 +57,14 @@ class PokerEvent extends Model implements HasMedia
         return $this->hasMany(LiveReportPlayer::class)->orderByDesc('current_chips');
     }
 
-    public function poker_tournament()
+    public function tournament()
     {
-        return $this->belongsTo(PokerTournament::class);
+        return $this->belongsTo(Tournament::class);
     }
 
     public function live_reports()
     {
-        return $this->hasMany(LiveReport::class);
+        return $this->hasMany(EventReport::class);
     }
 
     public function payouts()

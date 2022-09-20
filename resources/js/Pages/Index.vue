@@ -24,12 +24,9 @@ onMounted(async () => {
         <div class="container">
             <div class="row">
                 {{ articleStore.list }}
-                <!-- MAIN -->
                 <div class="col-sm-9">
                   <MainBar />
                 </div>
-                <!-- END OF MAIN -->
-                <!-- SIDE BAR -->
                 <div class="col-sm-3">  
                     <SideBar />
                 </div>

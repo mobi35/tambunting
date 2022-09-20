@@ -13,9 +13,9 @@ class LiveReportLiveReportPlayerTableSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('live_report_live_report_player')->delete();
+        \DB::table('event_chip_event_report')->delete();
 
-        \DB::table('live_report_live_report_player')->insert([
+        \DB::table('event_chip_event_report')->insert([
             0 => [
                 'id' => 14,
                 'live_report_id' => 5,

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class LiveReportRequest extends FormRequest
+class EventRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,12 +25,8 @@ class LiveReportRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => [
-                'required',
-            ],
-            'content' => 'required',
-            'day' => 'required',
-            'level' => 'required',
+            'title' => 'required',
+            'description' => 'required',
         ];
     }
 
@@ -54,10 +50,9 @@ class LiveReportRequest extends FormRequest
     public function messages()
     {
         return [
+            //
             'title.required' => 'Title is required',
-            'day.required' => 'Day is required',
-            'content.required' => 'Content is required',
-            'level.required' => 'Level is required',
+            'description.required' => 'Description is required',
         ];
     }
 }

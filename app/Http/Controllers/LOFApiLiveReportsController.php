@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\LOFApiLiveReportsResource;
-use App\Models\LiveReport;
+use App\Models\EventReport;
 use Illuminate\Http\Request;
 
 class LOFApiLiveReportsController extends Controller
@@ -15,7 +15,7 @@ class LOFApiLiveReportsController extends Controller
      */
     public function index()
     {
-        return LOFApiLiveReportsResource::collection(LiveReport::with(['player', 'article_author', 'level', 'live_report_players', 'live_report_players.player', 'live_report_players.player.country'])->where('poker_event_id', request()->all()['event'])->paginate(10));
+        return LOFApiLiveReportsResource::collection(EventReport::with(['player', 'article_author', 'level', 'live_report_players', 'live_report_players.player', 'live_report_players.player.country'])->where('poker_event_id', request()->all()['event'])->paginate(10));
     }
 
     public function create()

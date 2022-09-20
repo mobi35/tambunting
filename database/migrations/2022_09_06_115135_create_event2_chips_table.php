@@ -19,7 +19,7 @@ class CreateEvent2ChipsTable extends Migration
             $table->string('name');
             $table->foreignId('player_id');
             $table->foreignId('event_id')->nullable();
-            $table->foreignId('report_id');
+            $table->foreignId('event_report_id');
             $table->integer('current_chips')->default(0);
             $table->float('payout', 15, 2)->default(0);
             $table->integer('rank')->default(0);

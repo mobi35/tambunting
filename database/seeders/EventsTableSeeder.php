@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
-class PokerEventsTableSeeder extends Seeder
+class EventsTableSeeder extends Seeder
 {
     /**
      * Auto generated seed file

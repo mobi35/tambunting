@@ -29,7 +29,7 @@ class EventChipCrudController extends CrudController
         $this->crud->denyAccess('show');
         CRUD::setModel(\App\Models\EventChip::class);
         CRUD::setRoute(config('backpack.base.route_prefix').'/live-report-player');
-        CRUD::setEntityNameStrings('live report player', 'live report players');
+        CRUD::setEntityNameStrings('Event Chip', 'Event Chip');
     }
 
     /**

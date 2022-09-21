@@ -72,7 +72,6 @@
                                 style="float: left; margin: 0px 15px 5px 0px;">
                                 <div style="position: relative;">
                                     <img :src="report.image" alt="" style="margin-bottom: unset;" :style="[report.image_theme ? { 'filter': 'brightness(0.8)' } : {}]">
-                                <!-- PICCTURE FRAMES-->
                                     <div id="imageFrame" :style="{ 'background-image': 'url(' + getFrame(report.image_theme) + ')' }"></div>
                                 </div>
                                 <span class="image-caption">{{report.image_caption}}</span>

@@ -93,6 +93,8 @@ class EventReport extends Model implements HasMedia
             return;
         }
 
+    
+
         if (isset($this->attributes['id'])) {
             if (count($value) > 0) {
                 $this->liveReportPlayers()->detach();
@@ -131,7 +133,6 @@ class EventReport extends Model implements HasMedia
                 $query->where('report_id', $this->id);
             })->get(['player_id', 'current_chips', 'payout', 'rank']);
 
-            dd($val);
 
             return json_encode($val->toArray());
         } else {
@@ -142,7 +143,9 @@ class EventReport extends Model implements HasMedia
     protected static function booted()
     {
         static::created(function ($liveReport) {
+
             // dd($liveReport);
+
             $reportedPlayer = json_decode($liveReport->players, true);
             if (is_countable($reportedPlayer)) {
                 foreach ($reportedPlayer as $player) {

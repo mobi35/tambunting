@@ -11,9 +11,9 @@
         <!-- <div class="block-content" v-if="list.data"> -->
         <div class="title-section hide-underline">
             <!-- <h1 class="text-primary"><span>{{list.data.poker_tournament}}</span></h1> -->
-            <h1 class="text-primary"><span>tubol radores</span></h1>
+            <h1 class="text-primary"><span>Report</span></h1>
             <div style="display:flex; justify-content: space-between;">
-                <h1><span>adrian </span></h1>
+                <h1><span>Report </span></h1>
                 <!-- <h1><span>{{list.data.title}}</span></h1> -->
                 <p>
                   <select style="padding: 4px 8px; outline: none;">

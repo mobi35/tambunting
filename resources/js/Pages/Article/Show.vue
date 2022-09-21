@@ -4,7 +4,12 @@
 
 <Head>
   <title>{{ article.title }}</title>
-  <meta name="description" :content="article.body">
+
+  <meta property="og:title=" :content="article.title">
+  <meta property="og:description" :content="article.body">
+
+
+
 </Head>
 
 
@@ -12,8 +17,10 @@
         <!-- {{ getArticle(slug) }} -->
     <div class="block-content" >
         <div class="title-section hide-underline">
-            <a href="#" ><h1 class="text-primary"><span><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</span></h1></a>
+            <Link href="/" ><h1 class="text-primary"><span><i class="fa fa-chevron-left" aria-hidden="true"></i> Back</span></h1></Link>
         </div>
+
+
 
 
         <div class="single-post-box">
@@ -51,6 +58,13 @@
                         <img :src="article.image" alt="">
                         <span class="image-caption">{{article.caption}}</span>
                     </div>
+
+    <div class="fb-share-button" data-href="https://staging.lifeofoker.com/article/show/xin-hua-lai-wins-the-appt-main-event-for-5973000" data-layout="button_count" data-size="small"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstaing.lifeofpoker.com%2Farticle%2Fshow%2Fxin-hua-lai-wins-the-appt-main-event-for-5973000&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Share</a></div>
+
+
+
+
+
                     <p v-html="article.body"></p>
                 </div>
                 <div class="post-tags-box">
@@ -72,7 +86,7 @@
 
 <script setup> 
 
-import { Head } from '@inertiajs/inertia-vue3';
+import { Head, Link } from '@inertiajs/inertia-vue3';
 
 import FrontLayout from '@/Layouts/FrontLayout.vue';
 import ReportList from '../../Components/Frontend/Report/ReportList.vue';

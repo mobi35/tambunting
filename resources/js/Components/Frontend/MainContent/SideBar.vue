@@ -39,7 +39,7 @@
             </div>
 
         </div>
-        <div class="widget features-slide-widget" >
+        <div class="widget features-slide-widget" v-if="0">
         <!-- <div class="widget features-slide-widget" v-if="eventStore.list"> -->
             <div class="title-section">
                 <h1><span>Events</span></h1>

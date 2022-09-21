@@ -10,11 +10,27 @@
         @routes
         @vite('resources/js/app.js')
         @inertiaHead
+
+        <!-- Google tag (gtag.js) -->
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-L913NS2HT0"></script>
+
+<script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-L913NS2HT0'); </script>
+
     </head>
     <body class="font-sans antialiased">
+
+    <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v15.0&appId=671463846988197&autoLogAppEvents=1" nonce="5ZNysrfX"></script>
+
+
         @inertia
       <script src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script async defer src="https://www.instagram.com/embed.js"></script>
+
+
+
+
     </body>
 
 </html>

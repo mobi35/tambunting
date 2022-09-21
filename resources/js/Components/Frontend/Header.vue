@@ -47,7 +47,7 @@
                             <ul class="nav navbar-nav navbar-left custome-nav">
 
                                 <li class="drop"><a class="home" href="#">News & Info</a>
-
+<!-- 
                                     <ul class="dropdown">
                                         <li><a href="#">Live poker rooms</a></li>
                                         <li><a href="#">online poker rooms</a></li>
@@ -56,13 +56,17 @@
                                         <li><a href="#">videos</a></li>
                                         <li><a href="#">promotions</a></li>
                                         <li><a href="#">contact</a></li>
-                                    </ul>
+                                    </ul> -->
                                 </li>
 
 
-                                <li><Link :href="route('live-report')" >Live-reporting</Link> </li>
+                                <!-- <li><Link :href="route('live-report')" >Live-reporting</Link> </li>
 
-                                <li><Link :href="route('tournament')" >Event Calendar</Link> </li>
+                                <li><Link :href="route('tournament')" >Event Calendar</Link> </li> -->
+
+                <li><a href="#">Live reporting</a> </li>
+                <li><a href="#">Event Calendar</a> </li>
+
 
 
                                 <li><a class="tech" href="#">rankings & leaderboards</a></li>

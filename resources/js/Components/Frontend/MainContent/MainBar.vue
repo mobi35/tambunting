@@ -1,12 +1,9 @@
 <script setup>
 import { Head, Link } from '@inertiajs/inertia-vue3';
-
 import { useArticleStore } from '@/stores/article.js'
 import { onMounted } from '@vue/runtime-core';
 
 const articleStore = useArticleStore()
-
-
 
 const adrian = async (id) => {
      articleStore.getArticleBySlug(id)
@@ -24,7 +21,7 @@ defineProps({
 
 <template>
 
-    <div class="article-box block-content" v-if="1">
+    <div class="article-box block-content" v-if="0">
         <div class="title-section">
             <h1><span>Live reporting </span></h1>
         </div>
@@ -65,7 +62,6 @@ defineProps({
             <h1><span>Latest News</span></h1>
         </div>
 
-
         <!-- <div class="news-post article-post" v-for="(news) in articleList.list.data" :key="news.id"> -->
         <div class="news-post article-post" v-for="(news) in articleList.data" :key="news.id">
             <div class="row">
@@ -81,13 +77,13 @@ defineProps({
                     <div class="post-content">
 
                         <h2 >
-                        <Link href="/article/show" class="default-text-color">{{ news.title }}</Link>
+                        <Link :href="'/article/show/'+ news.slug"  class="default-text-color">{{ news.title }}</Link>
                         </h2>
                         <ul class="post-tags">
                             <li><i class="fa fa-clock-o"></i>{{news.date}}</li>
                         </ul>
                         <p>{{news.description}}</p>
-                        <Link href="/" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</Link>
+                        <Link :href="'/article/show/'+ news.slug" class="read-more-button"><i class="fa fa-arrow-circle-right"></i>Read More</Link>
                     </div>
                 </div>
             </div>

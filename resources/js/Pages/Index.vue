@@ -15,7 +15,6 @@ onMounted(async () => {
     articleStore.getList()
 })
 
-
 </script>
 
 <template>
